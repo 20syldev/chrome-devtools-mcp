@@ -164,6 +164,7 @@ export class McpResponse implements Response {
   #attachedTraceSummary?: TraceResult;
   #attachedTraceInsight?: TraceInsightData;
   #attachedLighthouseResult?: LighthouseData;
+  #attachedMemorySnapshot?: string;
   #textResponseLines: string[] = [];
   #images: ImageContentData[] = [];
   #networkRequestsOptions?: {
@@ -311,6 +312,10 @@ export class McpResponse implements Response {
 
   attachLighthouseResult(result: LighthouseData): void {
     this.#attachedLighthouseResult = result;
+  }
+
+  attachMemorySnapshot(result: string): void {
+    this.#attachedMemorySnapshot = result;
   }
 
   get includePages(): boolean {
@@ -585,6 +590,7 @@ export class McpResponse implements Response {
       extensions,
       lighthouseResult: this.#attachedLighthouseResult,
       inPageTools,
+      memorySnapshot: this.#attachedMemorySnapshot,
     });
   }
 
@@ -602,6 +608,7 @@ export class McpResponse implements Response {
       extensions?: InstalledExtension[];
       lighthouseResult?: LighthouseData;
       inPageTools?: ToolGroup<ToolDefinition>;
+      memorySnapshot?: string;
     },
   ): {content: Array<TextContent | ImageContent>; structuredContent: object} {
     const structuredContent: {

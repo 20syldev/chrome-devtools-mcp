@@ -118,7 +118,7 @@ export interface Response {
   includeSnapshot(params?: SnapshotParams): void;
   attachImage(value: ImageContentData): void;
   attachNetworkRequest(
-    reqid: number,
+    reqId: number,
     options?: {requestFilePath?: string; responseFilePath?: string},
   ): void;
   attachConsoleMessage(msgid: number): void;
@@ -134,6 +134,7 @@ export interface Response {
   setListExtensions(): void;
   attachLighthouseResult(result: LighthouseData): void;
   setListInPageTools(): void;
+  attachMemorySnapshot(t: unknown): void;
 }
 
 /**

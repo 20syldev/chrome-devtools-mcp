@@ -49,6 +49,13 @@ export {
   type ChromeReleaseChannel as BrowsersChromeReleaseChannel,
 } from '@puppeteer/browsers';
 
+// eslint-disable-next-line no-restricted-imports
+import {
+  HeapSnapshotWorkerProxy,
+  HeapSnapshotProxy,
+} from '../../node_modules/chrome-devtools-frontend/front_end/models/heap_snapshot_model/HeapSnapshotProxy.js';
+export {HeapSnapshotWorkerProxy, HeapSnapshotProxy};
+
 import {
   snapshot as snapshotImpl,
   navigation as navigationImpl,
